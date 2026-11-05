@@ -1,0 +1,28 @@
+{
+  "name": "paseo-descuento",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Paseo plugin: píldora de descuento nocturno de Alibaba en el composer.",
+  "files": [
+    "paseo-plugin.json",
+    "OVERVIEW.md",
+    "index.client.tsx",
+    "client/",
+    "shared/"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types test/*.test.ts"
+  },
+  "devDependencies": {
+    "@getpaseo/client": "0.11.2",
+    "@getpaseo/plugin": "0.11.2",
+    "@types/node": "^22.0.0",
+    "@types/react": "~19.2.0",
+    "react": "19.1.0",
+    "react-native": "0.81.5",
+    "typescript": "^5.9.3"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "paseo-descuento",
+  "name": "Descuento Alibaba",
+  "description": "Píldora en el composer: con un modelo de Alibaba, dice si el descuento nocturno está activo ahora y cuánto queda.",
+  "requirements": { "paseo": ">=0.11.2" }
+}
