@@ -8,13 +8,23 @@ import { Icon } from "@getpaseo/plugin/client/react-native";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { alibabaAgents, pildoraLabel, pildoraLineas, startPildora, subscribePildora } from "./client/pildora.ts";
+import { nightWindow } from "./shared/ventana.ts";
 
 // Una píldora por agente con modelo de Alibaba (el prefijo `alibaba` en el snapshot es lo que la dispara): dice si el
 // descuento nocturno está activo ahora y cuánto queda. El popover trae las dos franjas completas (España y Singapur).
 // Se repinta con cada snapshot y con un tick de 30 s para la cuenta atrás. Sin mitad de servidor: la ventana es reloj.
 
+// El icono es el único gancho de color de la píldora (la etiqueta la pinta el host): verde con el descuento activo,
+// rojo y pequeño cuando no. El repinte del pill coincide con el cambio de etiqueta, que cambia en el mismo instante.
 function MoonIcon(props: PluginButtonIconProps) {
-  return <Icon name="Moon" size={props.size} color={props.color} />;
+  const active = nightWindow(Date.now()).active;
+  return (
+    <Icon
+      name="Moon"
+      size={active ? props.size : Math.round(props.size * 0.7)}
+      color={active ? props.theme.colors.statusSuccess : props.theme.colors.statusDanger}
+    />
+  );
 }
 
 function DescuentoPopover(props: PluginButtonContentProps) {
